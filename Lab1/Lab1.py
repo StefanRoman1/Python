@@ -45,9 +45,19 @@ def exercise4(a) :
             result += a[i]
     print(result)
 
-#def exercise5(a) :
-    
-
+def exercise5(a) :
+    max_range = len(a)
+    result = ""
+    for k in range(0,int(max_range/2)) :
+        for i in range(k,len(a[k])-k) :
+            result += a[k][i]
+        for i in range(k+1,max_range-k) :
+            result += a[i][len(a[i])-k-1]
+        for i in range(len(a[max_range-1-k])-2-k,k-1,-1) :
+            result += a[max_range-k-1][i]
+        for i in range(max_range-2-k,k,-1) : 
+            result += a[i][k]
+    print(result)
 
 
 
@@ -56,3 +66,7 @@ def exercise4(a) :
 #exercise3("text","ttextastextsstexts")
 #exercise4("ThisIsCamelCaseLOL")
 #exercise5([['f','i','r','s'],['n','_','l','t'], ['o','b','a','_'],['h','t','y','p']])
+
+numar = 1236
+for cifra in numar : 
+    print(cifra)

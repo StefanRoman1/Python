@@ -59,6 +59,39 @@ def exercise5(a) :
             result += a[i][k]
     print(result)
 
+def exercise6(a) :
+    if str(a) == str(a)[::-1] :
+        print("Este palindrom")
+    else :
+        print("Nu este palindrom")
+
+def exercise7(a) :
+    number = 0
+    for i in a :
+        if i.isnumeric() == True : 
+            number = number * 10 + int(i)
+    print(number)
+    return number
+
+def exercise8(a) :
+    contor = 0
+    for i in range(2, len(bin(a))) :
+        if(int(bin(a)[i]) == 1) : 
+            contor += 1
+    print(contor)
+
+def exercise9(a) :
+    freq = {}
+    for i in a :
+        if i.lower() in freq :
+            freq[i.lower()] += 1
+        else :
+            if i != ' ' :
+                freq[i.lower()] = 1
+    print(max(freq, key = freq.get))
+
+def exercise10(a) :
+    print(len(a.split()))
 
 
 #exercise1()
@@ -66,7 +99,8 @@ def exercise5(a) :
 #exercise3("text","ttextastextsstexts")
 #exercise4("ThisIsCamelCaseLOL")
 #exercise5([['f','i','r','s'],['n','_','l','t'], ['o','b','a','_'],['h','t','y','p']])
-
-numar = 1236
-for cifra in numar : 
-    print(cifra)
+#exercise6(123454321)
+#exercise7("AnaAre127Mere")
+#exercise8(24)
+#exercise9("An apple is not a tomato")
+#exercise10("I have Python exam")

@@ -1,4 +1,3 @@
-import re
 import xml.etree.ElementTree as ET
 
 def function1(text):
@@ -24,7 +23,6 @@ def function6(text):
     return words
 
 def function7(cnp):
-    #check if the CNP is valid using regex
     regex = r"[1|2|5|6][1-9][1-9][0-1][0-9][0-3][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
     if re.match(regex, cnp):
         return True
@@ -49,12 +47,6 @@ def function8(path, regex):
                     print(file)
                 else:
                     print(">>", file)
-
-
-
-
-
-
 
 
 #print(function1("Hello1World2hello world!Hello"))

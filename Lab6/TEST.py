@@ -30,7 +30,6 @@ def function7(cnp):
         return True
     return False
 
-#Write a function that recursively scrolls a directory and displays those files whose name matches a regular expression given as a parameter or contains a string that matches the same expression.
 import os
 import re
 

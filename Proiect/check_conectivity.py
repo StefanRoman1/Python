@@ -3,6 +3,9 @@ import requests
 import time
 import psycopg2
 import pymongo
+import elasticsearch
+import warnings
+warnings.filterwarnings("ignore")
 
 class check_conectivity :
     def read_data(self):
@@ -55,6 +58,17 @@ class check_conectivity :
             start = time.time()
             myclient = pymongo.MongoClient(self.link, serverSelectionTimeoutMS=3000)
             myclient.server_info()
+            end = time.time()
+            print("Connection Successful")
+            print(f'Response Time: {end-start}')
+        except:
+            print(f'Connection could not be established for {self.link }')
+
+    def check_elasticSearch(self):
+        try:
+            start = time.time()
+            es = elasticsearch.Elasticsearch(self.link, timeout=3)
+            es.info()
             end = time.time()
             print("Connection Successful")
             print(f'Response Time: {end-start}')

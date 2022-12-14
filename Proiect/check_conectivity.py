@@ -2,6 +2,7 @@ import argparse
 import requests
 import time
 import psycopg2
+import pymongo
 
 class check_conectivity :
     def read_data(self):
@@ -48,6 +49,17 @@ class check_conectivity :
                 cur.close()
             except (Exception, psycopg2.Error) as error :
                 print (f'Connection could not be established for {self.link}')
+
+    def check_mongo(self):
+        try:
+            start = time.time()
+            myclient = pymongo.MongoClient(self.link, serverSelectionTimeoutMS=3000)
+            myclient.server_info()
+            end = time.time()
+            print("Connection Successful")
+            print(f'Response Time: {end-start}')
+        except:
+            print(f'Connection could not be established for {self.link }')
 
 if __name__ == "__main__":
     project = check_conectivity()

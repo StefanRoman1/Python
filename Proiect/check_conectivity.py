@@ -1,4 +1,7 @@
 import argparse
+import requests
+import time
+import psycopg2
 
 class check_conectivity :
     def read_data(self):
@@ -30,6 +33,21 @@ class check_conectivity :
             print(f'Response Time: {response.elapsed.total_seconds()}')
         except:
             print(f'Connection could not be established for {self.link}')
+
+    def check_postgresql(self):
+            try:
+                start = time.time()
+                conn = psycopg2.connect(self.link)
+                cur = conn.cursor()
+                cur.execute("SELECT version();")
+                record = cur.fetchone()
+                end = time.time()
+                print("You are connected to - ", record,"\n")
+                print("Connection Successful")
+                print(f'Response Time: {end-start}')
+                cur.close()
+            except (Exception, psycopg2.Error) as error :
+                print (f'Connection could not be established for {self.link}')
 
 if __name__ == "__main__":
     project = check_conectivity()

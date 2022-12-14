@@ -13,6 +13,17 @@ class check_conectivity :
         self.type = args.url and "-url" or args.mongodb and "-mongodb" or args.postgresql and "-postgresql" or args.elasticsearch and "-elasticsearch"
         self.x = int(args.x) if args.x else 0
 
+    def check(self):
+        if self.type.lower() == "-url":
+            self.check_http()
+        elif self.type.lower() == "-mongodb":
+            self.check_mongo()
+        elif self.type.lower() == "-postgresql":
+            self.check_postgresql()
+        elif self.type.lower() == "-elasticsearch":
+            self.check_elasticSearch()
+
 if __name__ == "__main__":
     project = check_conectivity()
     project.read_data()
+    project.check()

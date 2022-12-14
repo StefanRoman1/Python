@@ -23,6 +23,14 @@ class check_conectivity :
         elif self.type.lower() == "-elasticsearch":
             self.check_elasticSearch()
 
+    def check_http(self):
+        try:
+            response = requests.get(self.link)
+            print(f'HTTP Status Code: {response.status_code}, {response.reason}')
+            print(f'Response Time: {response.elapsed.total_seconds()}')
+        except:
+            print(f'Connection could not be established for {self.link}')
+
 if __name__ == "__main__":
     project = check_conectivity()
     project.read_data()

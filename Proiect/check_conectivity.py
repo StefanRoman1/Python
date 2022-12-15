@@ -14,11 +14,11 @@ class check_conectivity :
         parser.add_argument("-mongodb", help="mongodb url to check")
         parser.add_argument("-postgresql", help="postgresql url to check")
         parser.add_argument("-elasticsearch", help="elasticSearch url to check")
-        parser.add_argument("-x", help="time interval to check the connection")
+        parser.add_argument("-time", help="time interval to check the connection")
         args = parser.parse_args()
         self.link = args.url or args.mongodb or args.postgresql or args.elasticsearch
         self.type = args.url and "-url" or args.mongodb and "-mongodb" or args.postgresql and "-postgresql" or args.elasticsearch and "-elasticsearch"
-        self.x = int(args.x) if args.x else 0
+        self.x = int(args.time) if args.time else 0
 
     def check(self):
         if self.type.lower() == "-url":

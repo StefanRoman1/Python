@@ -18,20 +18,20 @@ class check_conectivity :
         parser.add_argument("-elasticsearch", help="elasticSearch url to check")
         parser.add_argument("-time", help="time interval to check the connection")
         args = parser.parse_args()
-        self.link = args.url or args.mongodb or args.postgresql or args.elasticsearch
+        self.link = args.url or args.mongodb or args.postgresql or args.elasticsearch or args.ftp
         self.type = args.url and "-url" or args.mongodb and "-mongodb" or args.postgresql and "-postgresql" or args.elasticsearch and "-elasticsearch" or args.ftp and "-ftp"
         self.x = int(args.time) if args.time else 0
 
     def check(self):
-        if self.type.lower() == "-url":
+        if self.type == "-url":
             self.check_http()
-        elif self.type.lower() == "-ftp":
+        elif self.type == "-ftp":
             self.check_ftp()
-        elif self.type.lower() == "-mongodb":
+        elif self.type == "-mongodb":
             self.check_mongo()
-        elif self.type.lower() == "-postgresql":
+        elif self.type == "-postgresql":
             self.check_postgresql()
-        elif self.type.lower() == "-elasticsearch":
+        elif self.type == "-elasticsearch":
             self.check_elasticSearch()
 
     def check_http(self):

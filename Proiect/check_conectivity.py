@@ -13,14 +13,14 @@ class check_conectivity :
         parser = argparse.ArgumentParser()
         parser.add_argument("-url", help="url to check")
         parser.add_argument("-ftp", help="ftp url to check")
-        parser.add_argument("-mongodb", help="mongodb url to check")
-        parser.add_argument("-postgresql", help="postgresql url to check")
-        parser.add_argument("-elasticsearch", help="elasticSearch url to check")
-        parser.add_argument("-time", help="time interval to check the connection")
+        parser.add_argument("-mongodb", help="mongodb URI to check")
+        parser.add_argument("-postgresql", help="postgresql URI to check")
+        parser.add_argument("-elasticsearch", help="elasticSearch URI to check")
+        parser.add_argument("-time", help="time interval to check the connection in minutes")
         args = parser.parse_args()
         self.link = args.url or args.mongodb or args.postgresql or args.elasticsearch or args.ftp
         self.type = args.url and "-url" or args.mongodb and "-mongodb" or args.postgresql and "-postgresql" or args.elasticsearch and "-elasticsearch" or args.ftp and "-ftp"
-        self.x = int(args.time) if args.time else 0
+        self.x = float(args.time) if args.time else 0
 
     def check(self):
         if self.type == "-url":
@@ -99,4 +99,4 @@ if __name__ == "__main__":
     else:
         while True:
             project.check()
-            time.sleep(project.x)
+            time.sleep(project.x*60)

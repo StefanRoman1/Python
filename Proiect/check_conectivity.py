@@ -78,4 +78,9 @@ class check_conectivity :
 if __name__ == "__main__":
     project = check_conectivity()
     project.read_data()
-    project.check()
+    if(project.x == 0):
+        project.check()
+    else:
+        while True:
+            project.check()
+            time.sleep(project.x)
